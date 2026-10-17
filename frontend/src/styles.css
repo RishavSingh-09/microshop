@@ -1,0 +1,148 @@
+/* MicroShop — ops-console aesthetic: dark slate, mono accents, status colors */
+:root {
+  --bg: #0d1220;
+  --panel: #151c2e;
+  --panel-2: #1b2440;
+  --line: #263252;
+  --text: #e6ecf7;
+  --dim: #8b97b3;
+  --accent: #5eb1ff;
+  --ok: #3ddc97;
+  --bad: #ff5d73;
+  --warn: #ffc857;
+  --radius: 10px;
+  --mono: "JetBrains Mono", "Fira Code", ui-monospace, Menlo, Consolas, monospace;
+  --sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background:
+    radial-gradient(1000px 500px at 80% -10%, #17224011, transparent),
+    var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  line-height: 1.5;
+}
+h2, h3 { margin: 0 0 4px; font-weight: 650; letter-spacing: -0.01em; }
+button { font: inherit; cursor: pointer; border: none; border-radius: 8px; }
+input {
+  font: inherit; color: var(--text); background: var(--panel-2);
+  border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; width: 100%;
+}
+input:focus, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+
+.shell { max-width: 1080px; margin: 0 auto; padding: 0 20px 40px; }
+
+/* Top bar */
+.topbar {
+  display: flex; align-items: center; gap: 18px; flex-wrap: wrap;
+  padding: 14px 0; border-bottom: 1px solid var(--line); margin-bottom: 22px;
+}
+.brand { font-family: var(--mono); font-weight: 700; font-size: 18px; display: flex; align-items: center; gap: 8px; }
+.brand.big { font-size: 26px; justify-content: center; margin-bottom: 6px; }
+.brand-mark { color: var(--accent); }
+.brand-sub { font-size: 11px; color: var(--dim); font-weight: 400; margin-left: 4px; }
+.tabs { display: flex; gap: 4px; flex: 1; flex-wrap: wrap; }
+.tab {
+  background: transparent; color: var(--dim); padding: 8px 14px;
+  border-radius: 8px; font-family: var(--mono); font-size: 13px; position: relative;
+}
+.tab:hover { color: var(--text); background: var(--panel); }
+.tab.active { color: var(--text); background: var(--panel-2); border: 1px solid var(--line); }
+.badge {
+  background: var(--accent); color: #06101f; font-size: 10px; font-weight: 700;
+  border-radius: 999px; padding: 1px 6px; margin-left: 6px; vertical-align: top;
+}
+.user-area { display: flex; align-items: center; gap: 10px; }
+.who { font-family: var(--mono); font-size: 13px; color: var(--dim); }
+.bell { background: transparent; font-size: 16px; padding: 6px; }
+
+/* Notifications */
+.notif-panel {
+  background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 16px; margin-bottom: 20px;
+}
+.notif { border-top: 1px dashed var(--line); padding: 10px 0 4px; }
+.notif p { margin: 4px 0; }
+.notif-type { font-family: var(--mono); font-size: 10px; color: var(--warn); letter-spacing: 0.08em; }
+
+/* Auth */
+.auth-wrap { min-height: 100vh; display: grid; place-items: center; padding: 20px; }
+.auth-card {
+  width: min(420px, 100%); background: var(--panel); border: 1px solid var(--line);
+  border-radius: 14px; padding: 28px; display: flex; flex-direction: column; gap: 12px;
+}
+.mode-switch { display: flex; gap: 6px; background: var(--panel-2); border-radius: 8px; padding: 4px; }
+.mode-switch button { flex: 1; background: transparent; color: var(--dim); padding: 8px; }
+.mode-switch .active { background: var(--bg); color: var(--text); }
+
+/* Buttons */
+.primary {
+  background: var(--accent); color: #06101f; font-weight: 650; padding: 10px 16px;
+}
+.primary:hover { filter: brightness(1.1); }
+.primary:disabled { opacity: 0.5; cursor: not-allowed; }
+.ghost { background: transparent; color: var(--dim); border: 1px solid var(--line); padding: 7px 12px; }
+.ghost:hover { color: var(--text); }
+.ghost.danger:hover { color: var(--bad); border-color: var(--bad); }
+
+/* Layout bits */
+.page-head { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; margin-bottom: 18px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 14px; margin-bottom: 18px; }
+.card {
+  background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 16px; display: flex; flex-direction: column; gap: 8px;
+}
+.emoji { font-size: 34px; }
+.emoji.sm { font-size: 22px; }
+.row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.grow { flex: 1; }
+.price { font-family: var(--mono); color: var(--accent); font-weight: 600; }
+.total { font-family: var(--mono); font-size: 18px; color: var(--accent); font-weight: 700; }
+.stock { font-family: var(--mono); font-size: 11px; color: var(--ok); }
+.stock.low { color: var(--warn); }
+.dim { color: var(--dim); }
+.small { font-size: 12px; }
+.error {
+  background: #ff5d7315; border: 1px solid var(--bad); color: var(--bad);
+  border-radius: 8px; padding: 10px 12px; font-family: var(--mono); font-size: 13px;
+}
+
+/* Cart & orders */
+.line {
+  display: flex; align-items: center; gap: 12px; background: var(--panel);
+  border: 1px solid var(--line); border-radius: var(--radius); padding: 12px 16px; margin-bottom: 8px;
+}
+.checkout { margin-top: 16px; display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+.order {
+  background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 14px 16px; margin-bottom: 10px;
+}
+.pill {
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em;
+  padding: 2px 8px; border-radius: 999px;
+}
+.pill.ok { background: #3ddc9720; color: var(--ok); }
+.pill.bad { background: #ff5d7320; color: var(--bad); }
+
+/* Status page */
+.status-grid { grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); }
+.svc h3 { font-family: var(--mono); font-size: 14px; }
+.svc.up { border-left: 3px solid var(--ok); }
+.svc.down { border-left: 3px solid var(--bad); animation: pulse 1.2s ease-in-out infinite; }
+@keyframes pulse { 50% { border-color: var(--bad); background: #ff5d730d; } }
+@media (prefers-reduced-motion: reduce) { .svc.down { animation: none; } }
+
+.hint {
+  background: var(--panel); border: 1px dashed var(--line); border-radius: var(--radius);
+  padding: 16px 20px; margin-top: 10px;
+}
+.hint ul { margin: 8px 0 0; padding-left: 18px; color: var(--dim); }
+.hint li { margin-bottom: 6px; }
+
+.foot {
+  margin-top: 30px; padding-top: 14px; border-top: 1px solid var(--line);
+  font-family: var(--mono); font-size: 11px; color: var(--dim); text-align: center;
+}
