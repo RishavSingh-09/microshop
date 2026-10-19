@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: microshop-config
+  namespace: microshop
+data:
+  AUTH_SERVICE_URL: "http://auth-service:3001"
+  PRODUCT_SERVICE_URL: "http://product-service:3002"
+  CART_SERVICE_URL: "http://cart-service:3003"
+  ORDER_SERVICE_URL: "http://order-service:3004"
+  NOTIFICATION_SERVICE_URL: "http://notification-service:3005"
